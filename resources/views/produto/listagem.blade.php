@@ -21,6 +21,8 @@
         <th>Foto</th>
         <th>Descrição</th>
         <th>Categoria</th>
+        <th>Tipo</th>
+        <th>Barril</th>  
         <th>Valor</th>
         <th>Entrada</th>
         <th>Saída</th>

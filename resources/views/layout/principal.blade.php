@@ -18,7 +18,7 @@
         
         <meta name="viewport" content="width=device-width">
 
-    	<title>Controle de Estoque Purchase Store</title>
+    	<title>Controle de Estoque F1 System</title>
     </head>
     <body>
         <nav class="navbar navbar-default">
@@ -30,7 +30,7 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ route('Pagina inicial') }}">Purchase Store</a>
+                <a class="navbar-brand" href="{{ route('Pagina inicial') }}">F1 System</a>
               </div>
               <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -48,6 +48,25 @@
                           <li><a href="{{ route('Cadastrar Categoria') }}">Cadastrar Categoria</a></li>
                         </ul>
                     </li>  
+
+                    <!-- By Luiz Vidaum -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tipos <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="{{ route('Listar Tipos') }}">Listar Tipos</a></li>
+                          <li><a href="{{ route('Cadastrar Tipo') }}">Cadastrar Tipo</a></li>
+                        </ul>
+                    </li>  
+
+                    <!-- By Luiz Vidaum -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Barris <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="{{ route('Listar Barris') }}">Listar Barris</a></li>
+                          <li><a href="{{ route('Cadastrar Barril') }}">Cadastrar Barril</a></li>
+                        </ul>
+                    </li>  
+                    
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Destaques <span class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -110,8 +129,8 @@
         @yield('conteudo')
 
 <footer class="bs-footer" role="contentinfo">
-  <div class="container">
-    <p>Purchase Store 2016-2019</p>
+  <div class="container"><br>
+    <p>F1 System 2020</p>
   </div>
 
 </footer>

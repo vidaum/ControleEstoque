@@ -55,6 +55,36 @@
     </div>
 
     <div class="form-group">
+        <label class="col-md-4 control-label" for="tipo">Tipo</label>
+        <div class="col-md-4">
+            <select id="tipo" name="fk_tipo" class="form-control">
+                @foreach($tipos as $t)
+                    @if($p->fk_tipo == $t->id_tipo)
+                        <option value="{{ $t->id_tipo}}" selected>{{ $t->nome}}</option>
+                    @else
+                        <option value="{{ $t->id_tipo}}">{{ $t->nome}}</option> 
+                    @endif    
+                @endforeach
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="tipo">Barril</label>
+        <div class="col-md-4">
+            <select id="barril" name="fk_barril" class="form-control">
+                @foreach($barris as $b)
+                    @if($p->fk_barril == $b->id_barril)
+                        <option value="{{ $b->id_barril}}" selected>{{ $b->tipo_barril}}</option>
+                    @else
+                        <option value="{{ $t->id_barril}}">{{ $b->tipo-barril}}</option> 
+                    @endif    
+                @endforeach
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
         <label class="col-md-4 control-label" for="destaque">Destaque</label>  
         <div class="col-md-3">
             <input name="destaque" type="hidden" value="0">

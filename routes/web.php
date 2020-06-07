@@ -58,6 +58,24 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/CadastrarCategoria/adiciona','CategoriaController@adiciona');
 	Route::post('/CadastrarCategoria/edita/{id_categoria}','CategoriaController@edita');
 
+	//Tipos by Luiz Vidaum
+	Route::get('/ListarTipo','TipoController@listar')->name('Listar Tipos');
+	Route::get('/ListarTipo/remove/{id_tipo}','TipoController@remove');
+	Route::get('/ListarTipo/mostrar/{id_tipo}','TipoController@mostra');
+
+	Route::get('/CadastrarTipo','TipoController@novo')->name('Cadastrar Tipo');
+	Route::post('/CadastrarTipo/adiciona','TipoController@adiciona');
+	Route::post('/CadastrarTipo/edita/{id_tipo}','TipoController@edita');
+
+	//Barris by Luiz Vidaum
+	Route::get('/ListarBarril','BarrilController@listar')->name('Listar Barris');
+	Route::get('/ListarBarril/remove/{id_barril}','BarrilController@remove');
+	Route::get('/ListarBarril/mostrar/{id_barril}','BarrilController@mostra');
+
+	Route::get('/CadastrarBarril','BarrilController@novo')->name('Cadastrar Barril');
+	Route::post('/CadastrarBarril/adiciona','BarrilController@adiciona');
+	Route::post('/CadastrarBarril/edita/{id_barril}','BarrilController@edita');
+
 	//Entrada
 	Route::get('/ListarEntrada','EntradaController@listarEntrada')->name('Listar Entradas');
 	Route::get('/ListarEntrada/remove/{id_entrada}','EntradaController@remove');
@@ -105,7 +123,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/CadastrarVenda/adiciona','VendaController@adiciona');
 	Route::post('/CadastrarVenda/edita/{id_venda}','VendaController@edita');
 
-	//Categorias
+	//Destaques
 	Route::get('/ListarDestaque','DestaqueController@listar')->name('Listar Destaques');
 
 });

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Request;
 use App\Produto;
 use App\Categoria;
+use App\Tipo;
 use App\Saida;
 use App\Http\Requests\SaidasRequest;
 use Carbon\Carbon; 

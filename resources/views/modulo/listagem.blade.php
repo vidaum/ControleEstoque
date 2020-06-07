@@ -1,10 +1,12 @@
 @extends('layout.principal')
 @section('conteudo')
 <div class="container">
+
   <h1>Listagem Módulos</h1>     
   <div class="row">
     <div class="col-sm-6 col-md-3">
       <div class="thumbnail">
+
         <h2>Venda</h2>
         <div class="caption">
           <li class="list-group-item"><a href="{{ route('Cadastrar Venda') }}">Cadastrar Venda</a></li>
@@ -14,6 +16,7 @@
     </div>    
     <div class="col-sm-6 col-md-3">
       <div class="thumbnail">
+
         <h2>Produto</h2>
         <div class="caption">
           <li class="list-group-item"><a href="{{ route('Listar Produtos') }}">Listar Produtos</a></li>
@@ -23,6 +26,27 @@
     </div>    
     <div class="col-sm-6 col-md-3">
       <div class="thumbnail">
+
+      <h2>Tipo</h2>
+        <div class="caption">
+          <li class="list-group-item"><a href="{{ route('Listar Tipos') }}">Listar Tipos</a></li>
+          <li class="list-group-item"><a href="{{ route('Cadastrar Tipo') }}">Cadastrar Tipo</a></li>
+        </div>
+      </div>
+    </div>    
+    <div class="col-sm-6 col-md-3">
+      <div class="thumbnail">
+
+      <h2>Barril</h2>
+        <div class="caption">
+          <li class="list-group-item"><a href="{{ route('Listar Barris') }}">Listar Barris</a></li>
+          <li class="list-group-item"><a href="{{ route('Cadastrar Barril') }}">Cadastrar Barril</a></li>
+        </div>
+      </div>
+    </div>    
+    <div class="col-sm-6 col-md-3">
+      <div class="thumbnail">
+
         <h2>Destaque</h2>
         <div class="caption">
           <li class="list-group-item"><a href="{{ route('Listar Destaques') }}">Listar Destaques</a></li>
@@ -32,6 +56,7 @@
     </div>   
     <div class="col-sm-6 col-md-3">
       <div class="thumbnail">
+
         <h2>Entrada</h2>
         <div class="caption">
           <li class="list-group-item"><a href="{{ route('Cadastrar Entrada') }}">Cadastrar Entrada</a></li>
@@ -41,6 +66,7 @@
     </div>    
     <div class="col-sm-6 col-md-3">
       <div class="thumbnail">
+
         <h2>Saída</h2>
         <div class="caption">
           <li class="list-group-item"><a href="{{ route('Listar Saidas') }}">Listar Saídas</a></li>
@@ -49,6 +75,7 @@
     </div>    
     <div class="col-sm-6 col-md-3">
       <div class="thumbnail">
+
         <h2>Cliente</h2>
         <div class="caption">
           <li class="list-group-item"><a href="{{ route('Cadastrar Cliente') }}">Cadastrar Cliente</a></li>
@@ -58,6 +85,7 @@
     </div>    
     <div class="col-sm-6 col-md-3">
       <div class="thumbnail">
+
         <h2>Relatório</h2>
         <div class="caption">
           <li class="list-group-item"><a href="{{ route('Listar Relatorios') }}">Listar Relatorios</a></li>

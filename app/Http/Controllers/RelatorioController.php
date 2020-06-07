@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Request;
 use DB;
 use App\Categoria;
+use App\Tipo;
 use App\Produto;
 use App\Venda;
 use App\Http\Requests\RelatorioRequest;
@@ -84,6 +85,19 @@ class RelatorioController extends Controller
 
 			case '5':
 				$relatorios = Produto
+		        ::join('saidas', 'saidas.fk_produto', '=', 'produtos.id_produto')
+        		->join('tipos', 'tipos.id_tipo', '=', 'produtos.fk_tipo')
+		        ->select('tipos.nome',DB::raw('count(produtos.id_produto) as contador'))
+        		->whereBetween('saidas.created_at',array($request["inicio"],$request["fim"]))
+		        ->groupBy('tipos.nome')
+		        ->getQuery() // Optional: downgrade to non-eloquent builder so we don't build invalid User objects.
+		        ->orderBy('contador','DESC')
+		        ->get();
+		        $_REQUEST["id_relatorio"] = $request["id_relatorio"];
+				break;
+
+			case '6':
+				$relatorios = Produto
 		        ::join('entradas', 'entradas.fk_produto', '=', 'produtos.id_produto')
         		->join('categorias', 'categorias.id_categoria', '=', 'produtos.fk_categoria')
 		        ->select('categorias.nome',DB::raw('count(produtos.id_produto) as contador'))
@@ -95,7 +109,7 @@ class RelatorioController extends Controller
 		        $_REQUEST["id_relatorio"] = $request["id_relatorio"];
 				break;			
 
-			case '6':
+			case '7':
 				$relatorios = Venda
 		        ::select(DB::raw('sum(vendas.valor_venda) as valor'),DB::raw('count(id_venda) as quantidade'),DB::raw('sum(vendas.valor_venda)/count(vendas.id_venda) as ticket_medio'))
         		->whereBetween('vendas.created_at',array($request["inicio"],$request["fim"]))
@@ -106,7 +120,7 @@ class RelatorioController extends Controller
 		        $_REQUEST["id_relatorio"] = $request["id_relatorio"];
 				break;
 
-			case '7':
+			case '8':
 				$relatorios = Venda
 		        ::select(DB::raw('sum(vendas.valor_venda) as valor'),DB::raw('count(vendas.id_venda) as quantidade'),DB::raw('sum(vendas.valor_venda)/count(vendas.id_venda) as ticket_medio'))
         		->whereBetween('vendas.created_at',array($request["inicio"],$request["fim"]))
@@ -116,7 +130,7 @@ class RelatorioController extends Controller
 		        $_REQUEST["id_relatorio"] = $request["id_relatorio"];
 				break;
 
-			case '8':
+			case '9':
 				$relatorios = Venda
 		        ::select(DB::raw('sum(vendas.valor_venda) as valor'),DB::raw('count(vendas.id_venda) as quantidade'),DB::raw('sum(vendas.valor_venda)/count(vendas.id_venda) as ticket_medio'))
         		->whereBetween('vendas.created_at',array($request["inicio"],$request["fim"]))
@@ -126,7 +140,7 @@ class RelatorioController extends Controller
 		        $_REQUEST["id_relatorio"] = $request["id_relatorio"];
 				break;
 
-			case '9':
+			case '10':
 				$relatorios = Venda
 		        ::join('clientes', 'clientes.id_clientes', '=', 'vendas.fk_cliente')
 		        ->select('clientes.id_clientes','clientes.nome','clientes.email','clientes.celular',DB::raw('sum(vendas.valor_venda) as valor'),DB::raw('count(clientes.id_clientes) as num_vendas'))
@@ -140,7 +154,7 @@ class RelatorioController extends Controller
 		        $_REQUEST["id_relatorio"] = $request["id_relatorio"];
 				break;
 
-			case '10':
+			case '11':
 
        			$relatorios = DB::select( DB::raw("select (select sum(p.valor_compra*e.quantidade) valor_entrada from produtos p
 													inner join entradas e on e.fk_produto = p.id_produto) - (select sum(p.valor_compra*s.quantidade) valor_entrada from produtos p

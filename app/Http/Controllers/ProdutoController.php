@@ -6,6 +6,8 @@ use Request;
 use DB;
 use App\Produto;
 use App\Categoria;
+use App\Tipo;
+use App\Barril;
 use App\Http\Requests\ProdutosRequest;
 use App\Repositories\ImageRepository;
 
@@ -20,8 +22,10 @@ class ProdutoController extends Controller
                             inner join produtos on produtos.id_produto = saidas.fk_produto
                             group by produtos.id_produto) as temp'), 'temp.id_produto', '=', 'produtos.id_produto')
         ->join('categorias', 'categorias.id_categoria', '=', 'produtos.fk_categoria')
+        ->join('tipos','tipos.id_tipo', '=', 'produtos.fk_tipo')
+        ->join('barris','barris.id_barril', '=', 'produtos.fk_barril')
         ->select('produtos.id_produto','produtos.codigo_produto','produtos.descricao', 'produtos.valor',DB::raw('sum(entradas.quantidade) as quantidadeEntrada'),'temp.quantidadeSaida','categorias.nome','produtos.path_image as imagens')
-        ->groupBy('produtos.descricao','produtos.codigo_produto','produtos.valor','produtos.id_produto','categorias.nome','produtos.path_image','temp.quantidadeSaida')
+        ->groupBy('produtos.descricao','produtos.codigo_produto','produtos.valor','produtos.id_produto','categorias.nome','tipos.nome','produtos.path_image','temp.quantidadeSaida')
         ->getQuery() // Optional: downgrade to non-eloquent builder so we don't build invalid User objects.
         ->orderBy('produtos.id_produto','ASC')
         ->get();
@@ -32,7 +36,11 @@ class ProdutoController extends Controller
     public function novo(){
 
         $categorias = Categoria::all();
-    	return view('produto.formulario')->with(['categorias' => $categorias]);
+        return view('produto.formulario')->with(['categorias' => $categorias]);
+        // Adicionado por Luiz Vidaum
+        $tipos = Tipo::all();
+        return view('produto.formulario')->with(['tipos' => $tipos]);
+
     }
 
     public function adiciona(ProdutosRequest $request, ImageRepository $repo){

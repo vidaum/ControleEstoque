@@ -69,6 +69,28 @@
     </div>
 
     <div class="form-group">
+        <label class="col-md-4 control-label" for="tipo">Tipo</label>
+        <div class="col-md-4">
+            <select id="tipo" name="fk_tipo" value="{{ old('fk_tipo') }}" class="form-control js-example-basic-multiple-limit">
+                @foreach($tipos as $t)
+                    <option value="{{ $t->id_tipo }}">{{ $t->nome }}</option>
+                @endforeach
+            </select>
+        </div>
+    </div>]
+    
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="tipo">Barril</label>
+        <div class="col-md-4">
+            <select id="barril" name="fk_barril" value="{{ old('fk_barril') }}" class="form-control js-example-basic-multiple-limit">
+                @foreach($barris as $b)
+                    <option value="{{ $b->id_barril }}">{{ $b->tipo_barril }}</option>
+                @endforeach
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
         <label class="col-md-4 control-label" for="destaque">Destaque</label>  
         <div class="col-md-3">
             <input name="destaque" type="hidden" value="0">
